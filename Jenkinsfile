@@ -33,6 +33,7 @@ pipeline {
               withCredentials([sshUserPrivateKey(credentialsId: 'my-ssh-key', keyFileVariable: 'PRIVATE_KEY')]) {
                 sh """
                 scp -i ${PRIVATE_KEY} -o StrictHostKeyChecking=no docker-compose.yml ${APP_SERVER}:${REMOTE_PATH}/docker-compose.yml
+                
                 scp -i ${PRIVATE_KEY} -o StrictHostKeyChecking=no .env ${APP_SERVER}:${REMOTE_PATH}/.env
 
 
